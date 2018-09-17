@@ -49,7 +49,7 @@ end
 ```
 ### Grap certain element
 ```JavaScript
-$("input[type=text])[0]
+$("input[type=text]")[0]
 //OR
 $("#email")
 ```
