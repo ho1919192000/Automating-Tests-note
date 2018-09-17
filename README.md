@@ -20,3 +20,36 @@ Note of "The Way of the Web Tester. A Beginner's Guide to Automating Tests"
  1. Favor unit tests over UI.
  2. Cover unit test gaps with integration tests.
  3. Use UI tests sparingly.
+## The Smoking User Interface
+### Enter the User Interface Test
+User Interface test (or UI) are scripts that test your application in the same way an end user would.
+### What UI test tell us?
+- Our application are correctly deployed
+- Our environment are correctly configured
+- All the pieces of our architecture are connected and hooked up right
+
+Example: 
+
+steps to log in:
+1. visit login page
+2. fill in email address
+3. fill in password
+4. click sign-in button
+5. check for presence of 'Weclome'
+```Ruby
+describe 'should be able to login' do
+ let(:user) {FactoryGirl.create(:user)}
+ before do
+  visit login_path
+  fill_in 'Email' with: user.password
+  click_button 'Sign in'
+ end
+ it {should have_selector('h1',text: 'Welcome')}
+end
+```
+### Grap certain element
+```JavaScript
+$("input[type=text])[0]
+//OR
+$("#email")
+```
