@@ -28,7 +28,7 @@ User Interface test (or UI) are scripts that test your application in the same w
 - Our environment are correctly configured
 - All the pieces of our architecture are connected and hooked up right
 
-Example: 
+Example  
 
 steps to log in:
 1. visit login page
@@ -53,3 +53,10 @@ $("input[type=text]")[0]
 //OR
 $("#email")
 ```
+## Chapter 4 Connecting the Dots with Intergration Tests
+### How the Web Works?
+1. Click and URL: http://funnycatz.com/piano.html
+2. A lookup service called DNS(Domain Name System) take part of that URL and convert it into an IP address
+http://funnycatz.com/piano.html -> DNS -> http://192.168.1.1:80/piano.html  
+http://192.168.1.1:80/piano.html  
+Protocol IP       Port  Resource
