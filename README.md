@@ -57,6 +57,12 @@ $("#email")
 ### How the Web Works?
 1. Click and URL: http://funnycatz.com/piano.html
 2. A lookup service called DNS(Domain Name System) take part of that URL and convert it into an IP address
+3. Browser take IP address and create the URL necessaty to fullfill user request.  
 http://funnycatz.com/piano.html -> DNS -> http://192.168.1.1:80/piano.html  
 http://192.168.1.1:80/piano.html  
-Protocol IP       Port  Resource
+Protocol     IP   Port    Resource  
+**Port:** Port numbers are the channels that servers are listening for incoming requests on. By default is usually port 80, but it could be anything(like 3000 or 8080)  
+### Talking HTTP
+Http GET is a command, a verb that says, "I would like to get something at this address."
+HTTP POST is one way browsers send information to servers. It takes the contents of HTML form, bundles it up, and sends it to the server.
+
