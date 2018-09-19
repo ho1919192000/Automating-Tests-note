@@ -63,6 +63,10 @@ http://192.168.1.1:80/piano.html
 Protocol     IP   Port    Resource  
 **Port:** Port numbers are the channels that servers are listening for incoming requests on. By default is usually port 80, but it could be anything(like 3000 or 8080)  
 ### Talking HTTP
-Http GET is a command, a verb that says, "I would like to get something at this address."
-HTTP POST is one way browsers send information to servers. It takes the contents of HTML form, bundles it up, and sends it to the server.
-
+**REST** stands for representational state transfer, is one of style to design web APIs.  
+- URL: resources we are looking for  
+**Main Four Verbs**  
+HTTP GET: Read (ex: /photo/:id) for getting existing resources  
+HTTP POST: Create (ex: /photos) for creating new one  
+HTTP PUT: Update (ex: /photo/:id) for updating existing resources  
+HTTP DELETE: Delete (ex: /photo/:id) for deleting existing ones  
