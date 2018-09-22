@@ -70,3 +70,70 @@ HTTP GET: Read (ex: /photo/:id) for getting existing resources
 HTTP POST: Create (ex: /photos) for creating new one  
 HTTP PUT: Update (ex: /photo/:id) for updating existing resources  
 HTTP DELETE: Delete (ex: /photo/:id) for deleting existing ones  
+## Chapter 5 Integration Testing RESTful Web Service  
+### CRUD  
+Get(read)  
+Post(create)  
+Put(update)  
+Delete(delete) 
+## Common Status Code
+**Code  Meaning&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description**  
+200 Success Everything worked OK  
+302 Redirect You are being redirected to another page  
+404 Missing We couldn't find what you were looking for  
+500 Error Something went wrong on our end  
+## HTTP GET
+```Ruby
+def setup
+  @permit = permits(:saskatoon)
+end
+
+test 'HTTP GET' do
+  get permit_path(:id => @permit.id, :format => :json)
+  assert response.body.to_s.include? 'Saskatoon'
+  assert_response :success # 200 ok
+ end
+```
+## HTTP POST
+```Ruby
+test 'HTTP POST' do
+  permit = Permit.find_by_location('Moose Jaw')
+  #verify it doesn't exist
+  assert_nil permit
+  #create it
+  post permits_path, permit: {location: 'Moose Jaw'}
+  #search for it again
+  permit = Permit.find_by_location('Moose Jaw')
+  #verify was created
+  assert_not_nil permit
+  #check_response :redirect
+ end 
+```
+## HTTP PUT
+```Ruby
+test 'HTTP PUT' do
+  #search for permit by new attribute
+  permit = Permit.find_by_location('Medicine Hat')
+  #verify it doesn't exist
+  assert_nil permit
+  #update it
+  put permits_path(@permit), permit: {location: 'Medicine Hat'}
+  #search for it again
+  permit = Permit.find_by_location('Medicine Hat')
+  #verify was created
+  assert_not_nil permit
+  #check response 
+  assert_response :redirect
+ end 
+```
+## HTTP DELETE
+```Ruby
+test 'HTTP DELETE' do
+ delete permit_pate(@permit)
+ assert_response : redirect
+ 
+ assert_raises(ActiveRecord::RecordNotFound) do
+   get permit_path(@permit)
+   end
+end
+```
